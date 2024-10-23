@@ -1,0 +1,18 @@
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        // two pointer initialization
+
+       ListNode prev=head; 
+       ListNode curr=head.next; 
+       //base case
+       if (head==null){
+        return null;
+       }
+       while(curr!=null){
+        prev.next=null;
+        curr.next=prev;
+       }
+       curr=curr.next;
+       return head;
+    }
+}
