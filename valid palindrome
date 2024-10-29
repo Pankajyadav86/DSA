@@ -1,0 +1,38 @@
+class Solution {
+    public boolean isValid(String s) {
+
+        //base case
+        if (s.length()%2!=0){
+            return false;
+        }
+
+        //creating an empty stack
+        Stack<Character> stack =new Stack<>();
+
+        //visiting to each charr by loop
+        for (int i=0; i<s.length(); i++){
+
+            //picking it one by one ant taking it as 
+            //new char as a
+
+            char a=s.charAt(i);
+            // taking empty case or initial case 
+            if(stack.isEmpty()){
+                stack.push(a);
+            }
+// during putting 2nd element in stack comparing it with 
+//already existing element by ASCI value 
+            else{
+                char top=stack.peek();
+                //difference in ASCI value will be 1 or 2  
+                if(a - top == 1 || a - top == 2){
+                    stack.pop();
+                }
+                else{
+                    stack.push(a);
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+}
