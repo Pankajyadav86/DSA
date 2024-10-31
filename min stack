@@ -1,0 +1,46 @@
+class MinStack {
+    // creating two stack
+
+
+    Stack<Integer> minStack=new Stack();  // minStack name
+    Stack<Integer> minValues=new Stack(); // minValues name
+
+    public MinStack() {
+
+    }
+    
+    public void push(int val) {
+        // if value is less then top vale then only push val in minValues stack or minStack empty
+
+        if(minValues.isEmpty() || val<=minValues.peek()){
+            minValues.push(val);
+        }
+        //agar val badha hai top of min Valeues to sirf min stack mein hi push kare sirf
+        minStack.push(val);
+    }
+    
+    public void pop() {
+        // top of both stacks are equal then only minvalues sain pop karo nhi tho sirf minStack sain pop karo 
+        if(minStack.peek().equals(minValues.peek())){
+            minValues.pop();
+        }
+        minStack.pop();
+    }
+    
+    public int top() {
+        return minStack.peek();
+    }
+    
+    public int getMin() {
+        return minValues.peek();
+    }
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * MinStack obj = new MinStack();
+ * obj.push(val);
+ * obj.pop();
+ * int param_3 = obj.top();
+ * int param_4 = obj.getMin();
+ */
